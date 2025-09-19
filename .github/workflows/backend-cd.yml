@@ -1,5 +1,5 @@
 name: Backend CD - Deploy Backend Services to AKS
-
+#trigger main
 on:
   workflow_run:
     workflows: ["Backend CI - Test, Build, Push Images to ACR"]
