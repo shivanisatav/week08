@@ -50,10 +50,5 @@ jobs:
           kubectl apply -f product-service.yaml
           kubectl apply -f order-service.yaml
 
-      - name: Wait for Rollout Completion
-        run: |
-          kubectl rollout status deployment/product-deployment
-          kubectl rollout status deployment/order-deployment
-
       - name: Logout from Azure
         run: az logout
