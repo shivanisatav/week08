@@ -50,13 +50,6 @@ jobs:
           kubectl apply -f product-service.yaml
           kubectl apply -f order-service.yaml
 
-      - name: Update Deployments with New Images
-        run: |
-          kubectl set image deployment/product-deployment \
-            product=${{ secrets.ACR_LOGIN_SERVER }}/product_service:${{ github.event.workflow_run.head_sha }}
-          kubectl set image deployment/order-deployment \
-            order=${{ secrets.ACR_LOGIN_SERVER }}/order_service:${{ github.event.workflow_run.head_sha }}
-
       - name: Wait for Rollout Completion
         run: |
           kubectl rollout status deployment/product-deployment
